@@ -12,10 +12,10 @@ It's Integrated Development Environment (IDE) uses the JavaScript programming la
 ### Task 1 - 
 Fire up Google Earth Engine by clicking *[here](https://code.earthengine.google.com/)*, where you will be greeted with a, hopefully, familiar sight. 
 
-1. Normalized Difference Vegetation Index (NDVI):
+Normalized Difference Vegetation Index (NDVI):
 
-![Normalized Difference Vegetation Index](http://www.sciweavers.org/upload/Tex2Img_1550172868/eqn.png)
+![Normalized Difference Vegetation Index](https://raw.githubusercontent.com/sdz14/GEO2441/master/LaTeX%20Equations/normalised_diff_veg_index.png)
 
-2. Enhanced Vegetation Index (EVI):
+Enhanced Vegetation Index (EVI):
 
-![Enhanced Vegetation Index](http://www.sciweavers.org/upload/Tex2Img_1550172603/eqn.png)
+![Enhanced Vegetation Index](https://raw.githubusercontent.com/sdz14/GEO2441/master/LaTeX%20Equations/enhanced_veg_index.png)
