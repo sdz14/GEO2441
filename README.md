@@ -1,8 +1,6 @@
-## Welcome to GitHub Pages
+## GEO2441 Practical 5 - Earth Engine for Time Series and Vegetation Indices
 
-You can use the [editor on GitHub](https://github.com/sdz14/GEO2441/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Today we will use Google Earth Engine in order to create and graph a simple time series, identify changes in land cover using vegetation indices, and construct and compare vegetation indices from raw satellite imagery. 
 
 ### Markdown
 
