@@ -9,10 +9,6 @@ Google Earth Engine is a cloud based satellite image processing platform. It all
 It's Integrated Development Environment (IDE) uses the JavaScript programming language (with the option of using Python - which is beyond the scope of this practical), to manipulate and analyse the satellite imagery.
 
 
-
-
-
-
 ## Task 1 - 
 
 For the first part of the practical, we will be using data from the Moderate Resolution Imaging Spectroradiometer (MODIS) instrument onboard NASA's Terra and Aqua satellites. MODIS provides us with quite coarse spatial resolution data, which is useful for monitoring land cover change on a larger (e.g. country-wide) scale. As a result of its somewhat low spatial resolution, it has a very good temporal resolution of 1-2 days. For more details about MODIS, refer to NASA's Terra satellite website *[here](https://terra.nasa.gov/about/terra-instruments/modis)*
@@ -29,7 +25,7 @@ Modified Soil Adjusted Vegetation Index 2 (MSAVI2):
 
 ![Modified Soil Adjusted Vegetation Index 2](https://raw.githubusercontent.com/sdz14/GEO2441/master/LaTeX%20Equations/msavi2.png)
 
-Vegetation Indices are quite simple and easy way to monitor vegetation cover, health and dynamics, and hence are very useful for environmental monitoring.
+Vegetation Indices are quite simple and easy way to monitor vegetation cover, health and dynamics, and hence are very useful for environmental monitoring (Xue, J. and Baofeng, S., 2017).
 
 
 The first task will be to derive both of the vegetation indices, create a landcover map for your chosen country and then proceed to plot the two vegetation indices against each other to identify their (if any) relationship. 
@@ -116,8 +112,9 @@ Here's the MSAVI equation again, to help you plug in the right parameters:
 4. Convert the resultant dataset to use floating point numbers.
 5. Add your result to the Map, like you did with NDVI.
 
+Once again, if all goes well, you should have something similar to this: 
 
-
+![Earth Engine Screenshot 3](https://raw.githubusercontent.com/sdz14/GEO2441/master/screenshots/earthengine_msavi.png)
 
 
 
