@@ -143,7 +143,7 @@ We can do this quite simply by finding out what the name of the "object" we have
 
 This should output a dictionary of the pixel values to the console, like so: 
 
-[Earth Engine Screenshot 5](https://raw.githubusercontent.com/sdz14/GEO2441/master/screenshots/earthengine_print.png)
+![Earth Engine Screenshot 5](https://raw.githubusercontent.com/sdz14/GEO2441/master/screenshots/earthengine_print.png)
 
 As you can see, the pixel values dictionary inherited the name of one of the bands we have used in our calculation of NDVI, though this might be different for you.
 
@@ -171,7 +171,7 @@ Now, let's replace the `???` with the relevant arguments. Let's plot the NDVI on
 
 Finished product: 
 
-[Earth Engine Screenshot 6](https://raw.githubusercontent.com/sdz14/GEO2441/master/screenshots/earthengine_plot.png)
+![Earth Engine Screenshot 6](https://raw.githubusercontent.com/sdz14/GEO2441/master/screenshots/earthengine_plot.png)
 
 So, we can see that there is a general positive relationship between the two Vegetation Indices. Any idea why this could be? 
 
