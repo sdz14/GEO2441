@@ -27,7 +27,20 @@ Modified Soil Adjusted Vegetation Index 2 (MSAVI2):
 
 Vegetation Indices are quite simple and easy way to monitor vegetation cover, health and dynamics, and hence are very useful for environmental monitoring.
 
+
+The first task will be to derive both of the vegetation indices, create a landcover map for your chosen country and then proceed to plot the two vegetation indices against each other to identify their (if any) relationship. 
+
+
 1. Fire up Google Earth Engine by clicking *[here](https://code.earthengine.google.com/)*, log in and you will be greeted with a, hopefully, familiar sight. 
+
+2. We will need to import the country dataset. Luckily, Google Earth Engine provides the The United States Office of the Geographer's "LSIB: Large Scale International Boundary Polygons" dataset for us. 
+Go ahead and import the dataset by: 
+
+```javascript
+var countryShps = ee.FeatureCollection("USDOS/LSIB_SIMPLE/2017")
+                                  .filter(ee.Filter.eq("country_co", "US"));
+```
+
 
 
 
