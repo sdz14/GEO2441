@@ -8,7 +8,7 @@ Google Earth Engine is a cloud based satellite image processing platform. It all
 
 It's Integrated Development Environment (IDE) uses the JavaScript programming language (with the option of using Python - which is beyond the scope of this practical), to manipulate and analyse the satellite imagery.
 
-You can read more about Earth Engine *[here](https://developers.google.com/earth-engine/)*
+You can read more about Earth Engine *[here](https://developers.google.com/earth-engine/)*.
 
 ## Task 1 - 
 
