@@ -40,7 +40,28 @@ Go ahead and import the dataset by:
 var countryShps = ee.FeatureCollection("USDOS/LSIB_SIMPLE/2017")
                                   .filter(ee.Filter.eq("country_co", "US"));
 ```
+Breaking the code down, we can see that we declared our variable using `var countryShps` and assigned it to `ee.FeatureCollection("USDOS/LSIB_SIMPLE/2017")`. After this, we "filtered" the dataset to only show the country we are interested in (in my case USA) by using a "filter" method `.filter(ee.Filter.eq("country_co", "US")`. 
 
+If you imagine the shapefiles we are using as a database table with columns and rows corresponding to a result, the "country_co" argument tells Earth Engine to choose from the Country code column within the table, while the "US" argument picks out a country from the said column.
 
+Right, if you did everything correctly, you should have an imported dataset, filtered to your country of interest, which we will use to crop (or "clip" in GIS lingo) our MODIS imagery. 
 
+3. Let's import our MODIS imagery, filter it, and clip it to our country of interest. 
+
+```javascript
+var modisData = ee.ImageCollection("MODIS/006/MOD09A1")
+                                  .filter(ee.Filter.date('2010-10-01', '2010-11-01'))
+                                  .median()
+                                  .clip(countryShps);
+```
+
+Like last time, we declared our variable "modisData", and filtered it to only use imagery between the dates we specified. Then we picked the median image, using the `.median()` method, and lastly, we "clipped" it to the country which we are interested in. Perfect! Hopefully the universe is on your side and if you enter the following code: 
+
+```javascript
+Map.addLayer(modisData, {min: -100, max: 16000}, "MODIS Dataset");
+```
+
+You should have something that looks like this:
+
+![Earth Engine Screenshot 1](https://raw.githubusercontent.com/sdz14/GEO2441/master/screenshots/earthengine_sc.png)
 
