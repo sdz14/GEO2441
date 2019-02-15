@@ -191,6 +191,10 @@ If you made it this far, congratulations.
 
 Take a breather for a few minutes, then open a new project...
 
+##Task 2 
+
+Work in Progress
+
 
 #### References: 
 1. Jinru Xue and Baofeng Su, “Significant Remote Sensing Vegetation Indices: A Review of Developments and Applications,” Journal of Sensors, vol. 2017, Article ID 1353691, 17 pages, 2017. [https://doi.org/10.1155/2017/1353691](https://doi.org/10.1155/2017/1353691).
