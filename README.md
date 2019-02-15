@@ -191,7 +191,7 @@ If you made it this far, congratulations.
 
 Take a breather for a few minutes, then open a new project...
 
-##Task 2 
+## Task 2 
 
 Work in Progress
 
