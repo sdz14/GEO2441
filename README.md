@@ -8,6 +8,7 @@ Google Earth Engine is a cloud based satellite image processing platform. It all
 
 It's Integrated Development Environment (IDE) uses the JavaScript programming language (with the option of using Python - which is beyond the scope of this practical), to manipulate and analyse the satellite imagery.
 
+You can read more about Earth Engine *[here](https://developers.google.com/earth-engine/)
 
 ## Task 1 - 
 
@@ -116,6 +117,67 @@ Once again, if all goes well, you should have something similar to this:
 
 ![Earth Engine Screenshot 3](https://raw.githubusercontent.com/sdz14/GEO2441/master/screenshots/earthengine_msavi.png)
 
+
+* Now, lets plot a graph showing how related well NDVI and MSAVI relate. 
+
+Now, let's sample some pixels and store their values. To do this, we will use the "Add a Marker" tool, to create a "MultiPoint" geometry collection. It can be found in the left hand corner of the Map window underneath the text editor (the icon looks like a little pin). 
+Now go ahead and lay down a whole lot of pins spaced out well across your NDVI/MSAVI study area. Try to get at least 50 (preferably more) pins down to get an accurate representation of the relationship. My sampling looks a little like this: 
+
+![Earth Engine Screenshot 4](https://raw.githubusercontent.com/sdz14/GEO2441/master/screenshots/earthengine_sampling.png)
+
+(Hint: Earth Engine will save your points under a default name "geometry". I highly recommend changing this to something more specific. You can find your saved geometries in the "Imports" section at the top of the text editor.)
+
+* Okay, let's get the values which we sampled into a dictionary. 
+
+Let's "reduce" the rasters which we have produced to a dictionary of NDVI/MSAVI pixel values. We can do this by assigning the following code to our declared pixel dictionary: 
+
+`var ndviPixels = modisNDVI.reduceRegion(ee.Reducer.toList(), ???, 160);`
+Replace `???` with the name of your geometry.
+Now, let's do the same thing for our MSAVI pixels. 
+
+* Right, almost done. We now must convert the dictionary of the pixel values into an array. 
+
+We can do this quite simply by finding out what the name of the "object" we have created is. Firstly, print the result of the dictionary to the console by calling: 
+
+`print("NDVI Pixels", ndviPixels);`
+
+This should output a dictionary of the pixel values to the console, like so: 
+
+[Earth Engine Screenshot 5](https://raw.githubusercontent.com/sdz14/GEO2441/master/screenshots/earthengine_print.png)
+
+As you can see, the pixel values dictionary inherited the name of one of the bands we have used in our calculation of NDVI, though this might be different for you.
+
+To convert this dictionary into an array which we can use to plot the pixel values, we need to call: 
+
+```javascript
+var ndviValues = ee.Array(ndviPixels.get("sur_refl_b02"));
+```
+Now, let's do the same for MSAVI values. 
+
+* Finally, we're at the end of the journey. Let's plot NDVI/MSAVI against each other and see how well they relate. 
+
+```javascript
+var chart = ui.Chart.array.values(???, 0, ???).setSeriesNames(["??? vs ???"]).setOptions({
+      title: 'MODIS NDVI vs MODIS MSAVI',
+      hAxis: {'title': 'MODIS ???'},
+      vAxis: {'title': 'MODIS ???'},
+      pointSize: 3,
+});
+
+print(chart);
+```
+
+Now, let's replace the `???` with the relevant arguments. Let's plot the NDVI on the X Axis and the MSAVI on the Y Axis. 
+
+Finished product: 
+
+[Earth Engine Screenshot 6](https://raw.githubusercontent.com/sdz14/GEO2441/master/screenshots/earthengine_plot.png)
+
+So, we can see that there is a general positive relationship between the two Vegetation Indices. Any idea why this could be? 
+
+If you made it this far, congratulations. 
+
+Take a breather for a few minutes, then open a new project...
 
 
 #### References: 
