@@ -112,8 +112,9 @@ Here's the MSAVI equation again, to help you plug in the right parameters:
 
 1. Replace the `???` in the expression method with the relevant bands.
 2. Define the relevant bands used in the expression in the dictionary (Hint: Make sure to wrap the parameters in quotes, like so "BAND"). 
-3. Replace the `???` in `modisData.select()` with the relevant bands from the MODIS dataset. (Hint: inputting "MODIS/006/MOD09A1" into the search bar of Earth Engine will bring up the description and metadata for the MODIS dataset - use the wavelength values to determine which wavebands are relevant - once again quick Google search for Electromagnetic Spectrum wavelengths is your friend).
-
+3. Replace the `???` in `modisData.select()` with the relevant bands from the MODIS dataset. (Hint: inputting "MODIS/006/MOD09A1" into the search bar of Earth Engine will bring up the description and metadata for the MODIS dataset we are using - use the wavelength values to determine which wavebands are relevant - once again quick Google search for Electromagnetic Spectrum wavelengths is your friend).
+4. Convert the resultant dataset to use floating point numbers.
+5. Add your result to the Map, like you did with NDVI.
 
 
 
