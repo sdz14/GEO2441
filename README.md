@@ -16,6 +16,6 @@ Normalized Difference Vegetation Index (NDVI):
 
 ![Normalized Difference Vegetation Index](https://raw.githubusercontent.com/sdz14/GEO2441/master/LaTeX%20Equations/normalised_diff_veg_index.png)
 
-Enhanced Vegetation Index (EVI):
+Modified Soil Adjusted Vegetation Index 2 (MSAVI2):
 
-![Enhanced Vegetation Index](https://raw.githubusercontent.com/sdz14/GEO2441/master/LaTeX%20Equations/enhanced_veg_index.png)
+![Modified Soil Adjusted Vegetation Index 2](https://raw.githubusercontent.com/sdz14/GEO2441/master/LaTeX%20Equations/msavi2.png)
