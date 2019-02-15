@@ -87,11 +87,34 @@ Now lets, break the code snippet down:
 Firstly, we declare a variable, `modisNDVI`, as before. Then we use the `.expression()` method and input the NDVI equation. Whilst still inside the `.expression()` method, we need to declare a "dictionary", using curly brackets {}. Inside this dictionary, we tell Earth Engine, which of the satellite image bands it needs to use for the expression. 
 A dictionary is simply a "list" where a "key" corresponds to a value. For example, the key "NIR" corresponds to the Near Infrared band of our MODIS image. Hence we choose `"NIR" : modisData.select("sur_refl_b02")`, because the "sur_refl_b02" is the Near Infrared band of our MODIS image. Lastly, we need to make sure that the values which we create are understood and represented correctly by the computer, hence we use the `.float()` method to convert the numbers into "floating point" numbers.
 
-Now, using: `Map.addLayer(modisNDVI, {min: ???, max: ???, palette: ['ffffff', '119701', '000000']}, "MODIS NDVI")` lets add the dataset we just created to the Map. Replace the ??? values with what you think the ideal values for NDVI should be. If you are not sure, a quick Google search should point you to the right answer.
+Now, using: `Map.addLayer(modisNDVI, {min: ???, max: ???, palette: ['ffffff', '119701', '000000']}, "MODIS NDVI")` lets add the dataset we just created to the Map. Replace the `???` with the range of values you think NDVI should correspond to. 
+
+If you are not sure, a quick Google search should point you to the right answer.
 
 Did it work? You should have something similar to this: 
 
 ![Earth Engine Screenshot 2](https://raw.githubusercontent.com/sdz14/GEO2441/master/screenshots/earthengine_sc_ndvi.png)
+
+* We are powering through, Now let's do the same thing we did above for MSAVI2. 
+
+```javascript
+var modisMSAVI = modisData.expression(
+                "(2 * ??? + 1 - sqrt(pow((2 * ??? + 1), 2) - 8 * (??? - ???))) / 2",
+                {???: modisData.select(???),
+                 ???: modisData.select(???)
+                })
+                .???();
+```
+
+Here's the MSAVI equation again, to help you plug in the right parameters: 
+
+![Modified Soil Adjusted Vegetation Index 2](https://raw.githubusercontent.com/sdz14/GEO2441/master/LaTeX%20Equations/msavi2.png)
+
+1. Replace the `???` in the expression method with the relevant bands.
+2. Define the relevant bands used in the expression in the dictionary (Hint: Make sure to wrap the parameters in quotes, like so "BAND"). 
+3. Replace the `???` in `modisData.select()` with the relevant bands from the MODIS dataset. (Hint: inputting "MODIS/006/MOD09A1" into the search bar of Earth Engine will bring up the description and metadata for the MODIS dataset - use the wavelength values to determine which wavebands are relevant - once again quick Google search for Electromagnetic Spectrum wavelengths is your friend).
+
+
 
 
 
