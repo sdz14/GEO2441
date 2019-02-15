@@ -87,7 +87,7 @@ Now lets, break the code snippet down:
 Firstly, we declare a variable, `modisNDVI`, as before. Then we use the `.expression()` method and input the NDVI equation. Whilst still inside the `.expression()` method, we need to declare a "dictionary", using curly brackets {}. Inside this dictionary, we tell Earth Engine, which of the satellite image bands it needs to use for the expression. 
 A dictionary is simply a "list" where a "key" corresponds to a value. For example, the key "NIR" corresponds to the Near Infrared band of our MODIS image. Hence we choose `"NIR" : modisData.select("sur_refl_b02")`, because the "sur_refl_b02" is the Near Infrared band of our MODIS image. Lastly, we need to make sure that the values which we create are understood and represented correctly by the computer, hence we use the `.float()` method to convert the numbers into "floating point" numbers.
 
-Now, using: `Map.addLayer(modisNDVI, {min: ???, max: ???, palette: ['ffffff', '119701', '000000']}, "MODIS Derived NDVI")` lets add the dataset we just created to the Map.
+Now, using: `Map.addLayer(modisNDVI, {min: ???, max: ???, palette: ['ffffff', '119701', '000000']}, "MODIS NDVI")` lets add the dataset we just created to the Map. Replace the ??? values with what you think the ideal values for NDVI should be. If you are not sure, a quick Google search should point you to the right answer.
 
 Did it work? You should have something similar to this: 
 
