@@ -31,9 +31,9 @@ Vegetation Indices are quite simple and easy way to monitor vegetation cover, he
 The first task will be to derive both of the vegetation indices, create a landcover map for your chosen country and then proceed to plot the two vegetation indices against each other to identify their (if any) relationship. 
 
 
-1. Fire up Google Earth Engine by clicking *[here](https://code.earthengine.google.com/)*, log in and you will be greeted with a, hopefully, familiar sight. 
+* Fire up Google Earth Engine by clicking *[here](https://code.earthengine.google.com/)*, log in and you will be greeted with a, hopefully, familiar sight. 
 
-2. We will need to import the country dataset. Luckily, Google Earth Engine provides the The United States Office of the Geographer's "LSIB: Large Scale International Boundary Polygons" dataset for us. 
+* We will need to import the country dataset. Luckily, Google Earth Engine provides the The United States Office of the Geographer's "LSIB: Large Scale International Boundary Polygons" dataset for us. 
 Go ahead and import the dataset by: 
 
 ```javascript
@@ -46,7 +46,7 @@ If you imagine the shapefiles we are using as a database table with columns and 
 
 Right, if you did everything correctly, you should have an imported dataset, filtered to your country of interest, which we will use to crop (or "clip" in GIS lingo) our MODIS imagery. 
 
-3. Let's import our MODIS imagery, filter it, and clip it to our country of interest. 
+* Let's import our MODIS imagery, filter it, and clip it to our country of interest. 
 
 ```javascript
 var modisData = ee.ImageCollection("MODIS/006/MOD09A1")
