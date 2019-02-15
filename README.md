@@ -179,7 +179,7 @@ var chart = ui.Chart.array.values(???, 0, ???).setSeriesNames(["??? vs ???"]).se
 print(chart);
 ```
 
-Now, let's replace the `???` with the relevant arguments. Let's plot the NDVI on the X Axis and the MSAVI on the Y Axis. 
+Now, let's replace the `???` with the relevant arguments. Plot the NDVI on the X Axis and the MSAVI on the Y Axis. 
 
 Finished product: 
 
