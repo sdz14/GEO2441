@@ -8,7 +8,7 @@ Google Earth Engine is a cloud based satellite image processing platform. It all
 
 It's Integrated Development Environment (IDE) uses the JavaScript programming language (with the option of using Python - which is beyond the scope of this practical), to manipulate and analyse the satellite imagery.
 
-You can read more about Earth Engine *[here](https://developers.google.com/earth-engine/)
+You can read more about Earth Engine *[here](https://developers.google.com/earth-engine/)*
 
 ## Task 1 - 
 
@@ -32,7 +32,7 @@ Vegetation Indices are quite simple and easy way to monitor vegetation cover, he
 The first task will be to derive both of the vegetation indices, create a landcover map for your chosen country and then proceed to plot the two vegetation indices against each other to identify their (if any) relationship. 
 
 
-* Fire up Google Earth Engine by clicking *[here](https://code.earthengine.google.com/)*, log in and you will be greeted with a, hopefully, familiar sight. 
+* Fire up Google Earth Engine by clicking *[here](https://code.earthengine.google.com/)*. Log in and you will be greeted with a, hopefully, familiar sight. 
 
 * We will need to import the country dataset. Luckily, Google Earth Engine provides the The United States Office of the Geographer's "LSIB: Large Scale International Boundary Polygons" dataset for us. 
 Go ahead and import the dataset by: 
@@ -41,11 +41,11 @@ Go ahead and import the dataset by:
 var countryShps = ee.FeatureCollection("USDOS/LSIB_SIMPLE/2017")
                                   .filter(ee.Filter.eq("country_co", "US"));
 ```
-Breaking the code down, we can see that we declared our variable using `var countryShps` and assigned it to `ee.FeatureCollection("USDOS/LSIB_SIMPLE/2017")`. After this, we "filtered" the dataset to only show the country we are interested in (in my case USA) by using a "filter" method `.filter(ee.Filter.eq("country_co", "US")`.
+Breaking the code down, we can see that we declared our variable using `var countryShps` and assigned to it: `ee.FeatureCollection("USDOS/LSIB_SIMPLE/2017")`. After this, we "filtered" the dataset to only show the country we are interested in (in my case, USA) by using a "filter" method `.filter(ee.Filter.eq("country_co", "US")`.
 
 If you imagine the shapefiles we are using as a database with columns and rows corresponding to a result, the "country_co" argument tells Earth Engine to choose from the Country code column within the table, while the "US" argument picks out a country from the said column.
 
-Go ahead and pick the country you are interested by changing out the second argument within the filter function. Refer here for the FIPS Country codes: https://en.wikipedia.org/wiki/List_of_FIPS_country_codes . 
+Go ahead and pick the country you are interested by changing out the second argument within the filter function. Refer here for the FIPS Country codes: *[https://en.wikipedia.org/wiki/List_of_FIPS_country_codes](https://en.wikipedia.org/wiki/List_of_FIPS_country_codes)*.
 
 Right, if you did everything correctly, you should have an imported dataset, filtered to your country of interest, which we will use to crop (or "clip" in GIS lingo) our MODIS imagery. 
 
@@ -84,7 +84,13 @@ Now lets, break the code snippet down:
 Firstly, we declare a variable, `modisNDVI`, as before. Then we use the `.expression()` method and input the NDVI equation. Whilst still inside the `.expression()` method, we need to declare a "dictionary", using curly brackets {}. Inside this dictionary, we tell Earth Engine, which of the satellite image bands it needs to use for the expression. 
 A dictionary is simply a "list" where a "key" corresponds to a value. For example, the key "NIR" corresponds to the Near Infrared band of our MODIS image. Hence we choose `"NIR" : modisData.select("sur_refl_b02")`, because the "sur_refl_b02" is the Near Infrared band of our MODIS image. Lastly, we need to make sure that the values which we create are understood and represented correctly by the computer, hence we use the `.float()` method to convert the numbers into "floating point" numbers.
 
-Now, using: `Map.addLayer(modisNDVI, {min: ???, max: ???, palette: ['ffffff', '119701', '000000']}, "MODIS NDVI")` lets add the dataset we just created to the Map. Replace the `???` with the range of values you think NDVI should correspond to. 
+Now, using: 
+
+```javascript
+Map.addLayer(modisNDVI, {min: ???, max: ???, palette: ['ffffff', '119701', '000000']}, "MODIS NDVI")
+```
+
+Let's add the dataset we just created to the Map. Replace the `???` with the range of values you think NDVI should correspond to. 
 
 If you are not sure, a quick Google search should point you to the right answer.
 
@@ -118,7 +124,7 @@ Once again, if all goes well, you should have something similar to this:
 ![Earth Engine Screenshot 3](https://raw.githubusercontent.com/sdz14/GEO2441/master/screenshots/earthengine_msavi.png)
 
 
-* Now, lets plot a graph showing how related well NDVI and MSAVI relate. 
+* Now, lets plot a graph showing how well related NDVI and MSAVI are. 
 
 Now, let's sample some pixels and store their values. To do this, we will use the "Add a Marker" tool, to create a "MultiPoint" geometry collection. It can be found in the left hand corner of the Map window underneath the text editor (the icon looks like a little pin). 
 Now go ahead and lay down a whole lot of pins spaced out well across your NDVI/MSAVI study area. Try to get at least 50 (preferably more) pins down to get an accurate representation of the relationship. My sampling looks a little like this: 
@@ -131,7 +137,10 @@ Now go ahead and lay down a whole lot of pins spaced out well across your NDVI/M
 
 Let's "reduce" the rasters which we have produced to a dictionary of NDVI/MSAVI pixel values. We can do this by assigning the following code to our declared pixel dictionary: 
 
-`var ndviPixels = modisNDVI.reduceRegion(ee.Reducer.toList(), ???, 160);`
+```javascript
+var ndviPixels = modisNDVI.reduceRegion(ee.Reducer.toList(), ???, 160);
+```
+
 Replace `???` with the name of your geometry.
 Now, let's do the same thing for our MSAVI pixels. 
 
@@ -139,7 +148,9 @@ Now, let's do the same thing for our MSAVI pixels.
 
 We can do this quite simply by finding out what the name of the "object" we have created is. Firstly, print the result of the dictionary to the console by calling: 
 
-`print("NDVI Pixels", ndviPixels);`
+```javascript
+print("NDVI Pixels", ndviPixels);
+```
 
 This should output a dictionary of the pixel values to the console, like so: 
 
@@ -152,6 +163,7 @@ To convert this dictionary into an array which we can use to plot the pixel valu
 ```javascript
 var ndviValues = ee.Array(ndviPixels.get("sur_refl_b02"));
 ```
+
 Now, let's do the same for MSAVI values. 
 
 * Finally, we're at the end of the journey. Let's plot NDVI/MSAVI against each other and see how well they relate. 
