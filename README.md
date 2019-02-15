@@ -10,7 +10,12 @@ It's Integrated Development Environment (IDE) uses the JavaScript programming la
 
 
 ### Task 1 - 
-Fire up Google Earth Engine by clicking *[here](https://code.earthengine.google.com/)*, where you will be greeted with a, hopefully, familiar sight. 
+
+For the first part of the practical, we will be using data from the Moderate Resolution Imaging Spectroradiometer (MODIS) instrument onboard NASA's Terra and Aqua satellites. MODIS provides us with quite coarse spatial resolution data, which is useful for monitoring land cover change on a larger (e.g. country-wide) scale. As a result of its somewhat low spatial resolution, it has a very good temporal resolution of 1-2 days. For more details about MODIS, refer to NASA's Terra satellite website *[here](https://terra.nasa.gov/about/terra-instruments/modis)*
+
+Using MODIS data, we will derive and compare two Vegetation Indices and see how they relate to each other. Firstly, we will derive Normalized Difference Vegetation Index (NDVI), which is the de facto gold standard of VIs. Following this, we will derive a the Modified Soil-adjusted Vegetation Index (MSAVI), specifically, its second, improved, iteration MSAVI2. 
+
+The mathematics behind both of the Vegetation Indices can be seen below, 
 
 Normalized Difference Vegetation Index (NDVI):
 
@@ -19,3 +24,10 @@ Normalized Difference Vegetation Index (NDVI):
 Modified Soil Adjusted Vegetation Index 2 (MSAVI2):
 
 ![Modified Soil Adjusted Vegetation Index 2](https://raw.githubusercontent.com/sdz14/GEO2441/master/LaTeX%20Equations/msavi2.png)
+
+Vegetation Indices are quite simple and easy way to monitor vegetation cover, health and dynamics, and hence are very useful for environmental monitoring.
+
+1. Fire up Google Earth Engine by clicking *[here](https://code.earthengine.google.com/)*, log in and you will be greeted with a, hopefully, familiar sight. 
+
+
+
