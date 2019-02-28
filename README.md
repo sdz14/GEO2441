@@ -12,9 +12,9 @@ You can read more about Earth Engine *[here](https://developers.google.com/earth
 
 ## Task 1 - 
 
-For the first part of the practical, we will be using data from the Moderate Resolution Imaging Spectroradiometer (MODIS) instrument onboard NASA's Terra and Aqua satellites. MODIS provides us with quite coarse spatial resolution data, which is useful for monitoring land cover change on a larger (e.g. country-wide) scale. As a result of its somewhat low spatial resolution, it has a very good temporal resolution of 1-2 days. For more details about MODIS, refer to NASA's Terra satellite website *[here](https://terra.nasa.gov/about/terra-instruments/modis)*
+For the first part of the practical, we will be using data from the Moderate Resolution Imaging Spectroradiometer (MODIS) instrument onboard NASA's Terra and Aqua satellites. MODIS provides us with quite coarse spatial resolution data, which is useful for monitoring land cover change on a larger (e.g. country-wide) scale. As a result of its somewhat low spatial resolution, it has a very good temporal resolution of 1-2 days. For more details about MODIS, refer to NASA's Terra satellite website *[here](https://terra.nasa.gov/about/terra-instruments/modis)*.
 
-Using MODIS data, we will derive and compare two Vegetation Indices and see how they relate to each other. Firstly, we will derive Normalized Difference Vegetation Index (NDVI), which is the de facto gold standard of VIs. Following this, we will derive a the Modified Soil-adjusted Vegetation Index (MSAVI), specifically, its second, improved, iteration MSAVI2. 
+Using MODIS data, we will derive and compare two Vegetation Indices and see how they relate to each other. Firstly, we will derive Normalized Difference Vegetation Index (NDVI), which is the de facto gold standard of VIs. Following this, we will derive the Modified Soil-adjusted Vegetation Index (MSAVI), specifically, its second, improved iteration MSAVI2. 
 
 The mathematics behind both of the Vegetation Indices can be seen below, 
 
