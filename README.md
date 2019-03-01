@@ -217,9 +217,11 @@ var sentinel2 = ee.ImageCollection("COPERNICUS/S2")
 
 We declare our variable `var sentinel2` and assign the entirety of the Sentinel-2 collection catalogue available on Earth Engine to it. Then we use the `.filterDate()` and `.filterBounds()` methods to reduce the entire collection into our timeframe and area of interest. The `.filterBounds()` method acts in a similar way to the `.clip()` method which you have used previously.
 
-As your first challenge, find out, through Earth Engine catalogue documentation or otherwise, the appropriate time frame to pass to the `filteDate()` function, which will return the entirety of Sentinel-2 catalogue, i.e. Imagery since launch, until present. Whilst we could just not pass a `.filterDate()` method to our ImageCollection to get the entire Sentinel-2 archive, its good for you to start thinking about time ranges and data availability of common remote sensing missions as a way to evaluate them, whether they are fit for the purposes of your analysis or not.
+As your first challenge, find out, through Earth Engine catalogue documentation or otherwise, the appropriate time frame to pass to the `filteDate()` function, which will return the entirety of Sentinel-2 catalogue, i.e. Imagery since launch, until present. 
 
-(Hint: Make sure the write the date in the format of "YYYY-MM-DD", otherwise Earth Engine will return an error or an incorrect timeframe).
+*Side note: Whilst we could just not pass a `.filterDate()` method to our ImageCollection to get the entire Sentinel-2 archive, its good for you to start thinking about time ranges and data availability of common remote sensing missions as a way to evaluate them, whether they are fit for the purposes of your analysis or not.*
+
+(Hint: Make sure to write the date in the format of "YYYY-MM-DD", otherwise Earth Engine will return an error or an incorrect timeframe).
 
 * Now, we will need to write a custom function which creates an NDVI image for each Sentinel-2 scene in our collection.
 
@@ -233,7 +235,7 @@ var sentinel2 = sentinel2.map(???);
 
 Let's break the code down a little bit, to understand what's going on. 
 We are declaring a variable `var addNdvi` and assigning a function, which we defined, to it. The function `addNdvi`, takes an image within the Sentinel-2 Image collection, and returns an image with a new band appended to it. 
-To apply the function we just defined to the entire ImageCollection (i.e. for every image), we need to "map" it to the collection, using the `.map()` method.
+To apply the function we just defined, to the entire ImageCollection (i.e. for every image), we need to "map" it to the collection, using the `.map()` method.
 
 *Side Note: Please don't confuse "map" with "Map" in Earth Engine. This has nothing to do with the Map window or cartography. The function "map", is a term in programming where we apply a given function over each element of a "container" (e.g. List, Dictionary, ImageCollection, Array, DataFrame, etc.)*
 
