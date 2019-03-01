@@ -195,7 +195,7 @@ Take a breather for a few minutes, then open a new project...
 
 Maps which display the difference between two fixed times are good at showing that change did in fact occur, but do not allow us to undertake a deeper and more detailed insight into the processes of the change, such as the rate of change or it's persistence (Gillanders, *et al.*, 2008). This is where time series come in. Time series can be defined as a sequence of data points across equally spaced time intervals. They are present across all sciences and can be applied to any processes where change occurs over time. In our case however, we will look at NDVI.
 
-We will learn how to construct a NDVI time series chart for the Falmouth and Penryn area over the period of June 2015 to February 2019.
+We will learn how to construct a monthly mean NDVI time series chart for the Falmouth and Penryn area.
 
 * After opening up a new project, zoom into the area for Falmouth and Penryn and draw a rectangular polygon over the area. This will be our region of interest. As before, make sure to rename your area from "geometry" to something more meaningful, like "Falmouth".
 
