@@ -193,9 +193,90 @@ Take a breather for a few minutes, then open a new project...
 
 ## Task 2 
 
-Work in Progress
+Maps which display the difference between two fixed times are good at showing that change did in fact occur, but do not allow us to undertake a deeper and more detailed insight into the processes of the change, such as the rate of change or it's persistence (Gillanders, *et al.*, 2008). This is where time series come in. Time series can be defined as a sequence of data points across equally spaced time intervals. They are present across all sciences and can be applied to any processes where change occurs over time. In our case however, we will look at NDVI.
 
+We will learn how to construct a NDVI time series chart for the Falmouth and Penryn area over the period of June 2015 to February 2019.
+
+* After opening up a new project, zoom into the area for Falmouth and Penryn and draw a rectangular polygon over the area. This will be our region of interest. As before, make sure to rename your area from "geometry" to something more meaningful, like "Falmouth".
+
+My area of interest looked a little bit like this: 
+
+![Earth Engine Screenshot 7](https://raw.githubusercontent.com/sdz14/GEO2441/master/screenshots/earthengine_roi.png)
+
+* Okay, after you defined your area of interest, import your dataset.
+
+To construct our time series, we will be using the Sentinel-2 dataset. Sentinel-2 is a part of European Union's and European Space Agency's Copernicus Earth observation mission. Data from Sentinel-2 is very useful, and is currently the highest spatial resolution, global coverage imagery which you can get for free. If you would like to familiarise yourself with Sentinel-2 a little bit more, check out this *[link](https://sentinel.esa.int/web/sentinel/missions/sentinel-2)*.
+
+As before, to import our dataset:
+
+```javascript
+var sentinel2 = ee.ImageCollection("COPERNICUS/S2")
+                            .filterDate("???", "???")
+                            .filterBounds(???);
+```
+
+We declare our variable `var sentinel2` and assign the entirety of the Sentinel-2 collection catalogue available on Earth Engine to it. Then we use the `.filterDate()` and `.filterBounds()` methods to reduce the entire collection into our timeframe and area of interest. The `.filterBounds()` method acts in a similar way to the `.clip()` method which you have used previously.
+
+Your first challenge, find out, through Earth Engine catalogue documentation or otherwise, the appropriate time frame to pass to the `filteDate()` function, which will return the entirety of Sentinel-2 catalogue, i.e. Imagery since launch, until present. 
+(Hint: Make sure the write the date in the format of "YYYY-MM-DD", otherwise Earth Engine will return an error or an incorrect timeframe).
+
+* Now, we will need to write a custom function which creates an NDVI image for each Sentinel-2 scene in our collection.
+
+```javascript
+var addNdvi = function(image){
+return image.addBands(image.normalizedDifference(["???", "???"]));
+};
+
+var sentinel2 = sentinel2.map(???);
+```
+
+Let's break the code down a little bit, to understand what's going on. 
+We are declaring a variable `var addNdvi` and assigning a function, which we defined, to it. The function `addNdvi`, takes an image within the Sentinel-2 Image collection, and returns an image with a new band appended to it. 
+To apply the function we just defined to the entire ImageCollection (i.e. for every image), we need to "map" it to the collection, using the `.map()` method.
+
+*Side Note: Please don't confuse "map" with "Map" in Earth Engine. This has nothing to do with the Map window or cartography. The function "map", is a term in programming where we apply a given function over each element of a "container" (e.g. List, Dictionary, ImageCollection, Array, DataFrame, etc.)*
+
+As before, through the Sentinel-2 catalogue reference, or otherwise, find the bands which correspond to Red and Near Infra-Red in Sentinel-2 imagery and fill out the missing arguments in the `.normalizedDifference()` function. Refer to the NDVI equation in the first part of the practical, for the correct order of the bands. Then, fill out the missing argument in the `.map()` method (read over the Side Note for a hint). 
+
+* Good, now we can narrow down our ImageCollection to only include the newly appended NDVI band.
+
+To do this, simply declare a variable called `var ndvi` and assign `sentinel2.select(["???"])` to it.
+To find the right argument to pass to the `.select()` method, you can use `print(sentinel2)`. Then, in the console: 
+
+1. Click ImageCollection
+2. Click the drop-down on Features (Will return every image in the collection)
+3. Click the drop-down on any image, the first will do just fine. 
+4. Then click drop-down on "bands", where you will see the names of each band in the image (e.g. "B1", "B2", etc.) 
+
+Which band name corresponds to the newly appended NDVI band? Pass this band to the `sentinel2.select(["???"])` function.
+
+* Lastly, to construct our time series chart: 
+
+```javascript
+var plotNdvi = ui.Chart.image.seriesByRegion(sentinel2, ???, ee.Reducer.mean(),
+"???", 500, "system:time_start", "system:index")
+              .setChartType("LineChart").setOptions({
+                title: "Sentinel-2 Derived NDVI Falmouth Area",
+                hAxis: {title: "???"},
+                vAxis: {title: "???"}
+});
+
+print(plotNdvi);
+```
+
+1. Fill the first `???` with the name of your area of interest geometry. 
+2. FIll the second `???` with the name of the band corresponding to the NDVI image (will be the same as from the last task)
+3. Fill the hAxis `???` and vAxis `???` - Time should be on the X-Axis, NDVI should be on the Y-Axis.
+
+* Absolutely perfect! Hopefully, Earth Engine will produce something similar to this:
+
+![Earth Engine Screenshot 8](https://raw.githubusercontent.com/sdz14/GEO2441/master/screenshots/earthengine_timeseries.png)
+
+* Last Question: 
+
+As you have hopefully noticed, the space between the points starts out quite wide apart but then gets very narrow in mid-March 2017, indicating more frequent measurements. Why do you think this is? 
 
 #### References: 
-1. Jinru Xue and Baofeng Su, “Significant Remote Sensing Vegetation Indices: A Review of Developments and Applications,” Journal of Sensors, vol. 2017, Article ID 1353691, 17 pages, 2017. [https://doi.org/10.1155/2017/1353691](https://doi.org/10.1155/2017/1353691).
-2. Wikipedia - "List of FIPS country codes" - [https://en.wikipedia.org/wiki/List_of_FIPS_country_codes](https://en.wikipedia.org/wiki/List_of_FIPS_country_codes)
+1. Gillanders, S. N., Coops, N. C., Wulder, M. A., Gergel, S. E., & Nelson, T. (2008). Multitemporal remote sensing of landscape dynamics and pattern change: describing natural and anthropogenic trends. Progress in Physical Geography: Earth and Environment, 32(5), 503–528. [https://doi.org/10.1177/0309133308098363](https://doi.org/10.1177/0309133308098363).
+2. Jinru Xue and Baofeng Su, “Significant Remote Sensing Vegetation Indices: A Review of Developments and Applications,” Journal of Sensors, vol. 2017, Article ID 1353691, 17 pages, 2017. [https://doi.org/10.1155/2017/1353691](https://doi.org/10.1155/2017/1353691).
+3. Wikipedia - "List of FIPS country codes" - [https://en.wikipedia.org/wiki/List_of_FIPS_country_codes](https://en.wikipedia.org/wiki/List_of_FIPS_country_codes)
