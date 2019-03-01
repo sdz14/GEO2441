@@ -274,7 +274,7 @@ print(plotNdvi);
 
 * Last Question: 
 
-As you have hopefully noticed, the space between the points starts out quite wide apart but then gets very narrow in mid-March 2017, indicating more frequent measurements. Why do you think this is? 
+As you have hopefully noticed, the space between the points starts out quite wide apart but then gets very narrow in mid-March 2017, indicating the temporal resolution of the data has increased. Why do you think this is? 
 
 #### References: 
 1. Gillanders, S. N., Coops, N. C., Wulder, M. A., Gergel, S. E., & Nelson, T. (2008). Multitemporal remote sensing of landscape dynamics and pattern change: describing natural and anthropogenic trends. Progress in Physical Geography: Earth and Environment, 32(5), 503–528. [https://doi.org/10.1177/0309133308098363](https://doi.org/10.1177/0309133308098363).
