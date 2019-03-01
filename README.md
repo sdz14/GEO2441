@@ -217,7 +217,8 @@ var sentinel2 = ee.ImageCollection("COPERNICUS/S2")
 
 We declare our variable `var sentinel2` and assign the entirety of the Sentinel-2 collection catalogue available on Earth Engine to it. Then we use the `.filterDate()` and `.filterBounds()` methods to reduce the entire collection into our timeframe and area of interest. The `.filterBounds()` method acts in a similar way to the `.clip()` method which you have used previously.
 
-Your first challenge, find out, through Earth Engine catalogue documentation or otherwise, the appropriate time frame to pass to the `filteDate()` function, which will return the entirety of Sentinel-2 catalogue, i.e. Imagery since launch, until present. 
+As your first challenge, find out, through Earth Engine catalogue documentation or otherwise, the appropriate time frame to pass to the `filteDate()` function, which will return the entirety of Sentinel-2 catalogue, i.e. Imagery since launch, until present. Whilst we could just not pass a `.filterDate()` method to our ImageCollection to get the entire Sentinel-2 archive, its good for you to start thinking about time ranges and data availability of common remote sensing missions as a way to evaluate them, whether they are fit for the purposes of your analysis or not.
+
 (Hint: Make sure the write the date in the format of "YYYY-MM-DD", otherwise Earth Engine will return an error or an incorrect timeframe).
 
 * Now, we will need to write a custom function which creates an NDVI image for each Sentinel-2 scene in our collection.
